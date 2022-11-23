@@ -1,4 +1,4 @@
-var map;
+let map;
 var markers = [];
 
 // load map
