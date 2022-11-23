@@ -2,7 +2,7 @@ let map;
 var markers = [];
 
 // load map
-function init() {
+function initMap() {
     var myOptions = {
         zoom: 14,
         center: { lat: 42.353350, lng: -71.091525 },
@@ -50,7 +50,11 @@ function addMarker(bus) {
             lng: bus.attributes.longitude
         },
         map: map,
-        icon: icon,
+        icon: {
+            icon,
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 5,
+        },
         id: bus.id
     });
     markers.push(marker);
@@ -83,4 +87,4 @@ function getMarker(id) {
     return marker;
 }
 
-window.onload = init;
+window.onload = initMap;
