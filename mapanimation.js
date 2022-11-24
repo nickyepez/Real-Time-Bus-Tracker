@@ -44,7 +44,7 @@ async function addMarkers() {
 
     // timer
     console.log(new Date());
-    setTimeout(addMarkers, 5000);
+    setTimeout(addMarkers, 10000);
 }
 
 // Request bus data from MBTA
