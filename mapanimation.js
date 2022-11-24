@@ -1,5 +1,15 @@
 let map;
 var markers = [];
+const blueBus = {
+    url: "https://img.icons8.com/ultraviolet/2x/bus.png",
+    size: new google.maps.Size(100, 100),
+    anchor: new google.maps.Point(50, 50)
+}
+const redBus = {
+    url: "https://img.icons8.com/fluency/2x/bus.png",
+    size: new google.maps.Size(100, 100),
+    anchor: new google.maps.Point(50, 50)
+}
 
 // load map
 function initMap() {
@@ -17,6 +27,7 @@ function initMap() {
 async function addMarkers() {
     // get bus data
     var locations = await getBusLocations();
+    console.log(locations);
 
     // loop through data, add bus markers
     locations.forEach(function (bus) {
@@ -31,7 +42,7 @@ async function addMarkers() {
 
     // timer
     console.log(new Date());
-    setTimeout(addMarkers, 15000);
+    setTimeout(addMarkers, 5000);
 }
 
 // Request bus data from MBTA
@@ -50,11 +61,12 @@ function addMarker(bus) {
             lng: bus.attributes.longitude
         },
         map: map,
-        icon: {
-            icon,
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 5,
-        },
+        icon: blueBus,
+        // icon: {
+        //     icon,
+        //     path: google.maps.SymbolPath.CIRCLE,
+        //     scale: 5,
+        // },
         id: bus.id
     });
     markers.push(marker);
@@ -63,15 +75,16 @@ function addMarker(bus) {
 function getIcon(bus) {
     // select icon based on bus direction
     if (bus.attributes.direction_id === 0) {
-        return '';
-    }
-    return '';
+        return blueBus;
+    }  
+    return redBus;
 }
 
 function moveMarker(marker, bus) {
     // change icon if bus has changed direction
     var icon = getIcon(bus);
     marker.setIcon(icon);
+   
 
     // move icon to new lat/lon
     marker.setPosition({
