@@ -1,9 +1,2 @@
 # Real-Time-Bus-Tracker
-Bus tracker exercise
-
-## Test
-dsdsdsdsdsd
-sdsdsd
-### Test
-sddsdsd
-dsdsds
+Description: In this page you will visualize a map of the city of Boston that is tracking the movement of the MBTA buses that are currently serving route 1.  Bus data is refreshed every 15 seconds from an API.
